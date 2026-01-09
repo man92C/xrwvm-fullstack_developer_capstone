@@ -7,17 +7,20 @@ from .models import CarMake, CarModel
 # CarModelInline class
 class CarModelInline(admin.StackedInline):
     model = CarModel
-    extra = 1  
+    extra = 1
+
 
 # CarModelAdmin class
 class CarModelAdmin(admin.ModelAdmin):
-    list_display = ('name', 'car_make', 'type', 'year', 'engine_type') 
-    list_filter = ('car_make', 'type', 'year')
+    list_display = ("name", "car_make", "type", "year", "engine_type")
+    list_filter = ("car_make", "type", "year")
+
 
 # CarMakeAdmin class with CarModelInline
 class CarMakeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'headquarter') 
+    list_display = ("name", "description", "headquarter")
     inlines = [CarModelInline]
+
 
 # Register models here
 admin.site.register(CarMake, CarMakeAdmin)
